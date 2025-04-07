@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Makine llogaritese</title>
+        <link rel="stylesheet" href="styles.css"/>
+    </head>
+    <body>
+        <h1 style="text-align:center;"><ins>Makine llogaritese</ins></h1>
+
+        <br><br>
+        
+        <p style="text-align:center;">E thjeshte</p>
+        <section style="border-style:solid; border-color:red;">
+        <label style="margin-top:20px;" for="nr1">Vendosni numrin e pare:</label>
+        <input style="margin-top:20px;" type="text" id="nr1" name="nr1"/><br><br>
+
+        <select style="margin-right:270px;" id="sign" name="sign">
+            <option value='+' selected>+</option>
+            <option value='-'>-</option>
+            <option value='*'>*</option>
+            <option value='/'>/</option>
+        </select><br><br>
+
+        <label for="nr2">Vendosni numrin e dyte:</label>
+        <input type="text" id="nr2" name="nr2"/><br><br>
+
+        <button style="margin-right:270px;" onclick="f()">Llogarit</button><br><br>
+
+        <p id="result"></p>
+
+        </section>
+        <br><br><br><br>
+
+        <p style="text-align:center;">Shkencore</p>
+        <section class="shkencore" style="border-style:solid; border-color:red; margin-bottom:10%;">
+        
+        
+        <label style="margin-top:20px; margin-left:1%" for="nr">Vendosni kendin ne radian:</label>
+        <input class="input2" style="margin-top:20px;" type="text" id="nr" name="nr"/><br><br>
+        
+        <ul style="list-style:none; display:flex;">
+
+
+        <li><select style="margin-left:70%;" id="shk" name="shk">
+            <option value="sinusi">sin</option>
+            <option value="kosinusi">cos</option>
+            <option value="tangenti">tan</option>
+            <option value="kotangenti">cot</option>
+        </select>
+        </li>
+
+    <li style="margin-left:55%;"><button onclick="f2()">Llogarit</button></li>
+
+    </ul>
+
+      <br>
+                <p id="result2"></p>
+
+        </section>
+
+        <script>
+            function f(){
+                let x=document.getElementById("nr1").value;
+                let y=document.getElementById("nr2").value;
+                let z=document.getElementById("sign").value;
+                let rez;
+
+                if(x!=="" && y!==""){
+
+
+                switch(z){
+                    case '+':
+                        rez=x-(-y);
+                        break;
+                    case '-':
+                        rez=x-y;
+                        break;
+                    case '*':
+                        rez=x*y;
+                        break;
+                    case '/':
+                        rez=x/y;
+                        break;
+
+                    }
+                
+
+
+            
+
+            if(isNaN(rez)){
+                document.getElementById("result").innerHTML="Ju lutem vendosni inpute te vlefshme!";
+
+            }else if(rez==Infinity || rez==-Infinity){
+
+                document.getElementById("result").innerHTML="Nuk mund te kryhet pjesetimi me 0 !";
+
+
+            }else{
+                document.getElementById("result").innerHTML="Rezultati = "+rez.toFixed(2);
+
+            }
+
+            }
+
+             else{
+            document.getElementById("result").innerHTML="Ju lutem vendosini te dy numrat!";
+
+          }
+
+        }
+
+        function f2(){
+            let a=document.getElementById("nr").value;
+            let b=document.getElementById("shk").value;
+            let rez2;
+
+            if(a!==""){
+
+   
+
+switch(b){
+    case 'sinusi':
+        rez2=Math.sin(a);
+        break;
+    case 'kosinusi':
+        rez2=Math.cos(a);
+        break;
+    case 'tangenti':
+        rez2=Math.tan(a);
+        break;
+    case 'kotangenti':
+        rez2=1/Math.tan(a);
+        break;
+
+    }
+
+
+
+
+
+if(isNaN(rez2)){
+document.getElementById("result2").innerHTML="Ju lutem vendosni input te vlefshem!";
+
+}
+
+else{
+document.getElementById("result2").innerHTML="Rezultati = "+rez2.toFixed(2);
+
+   }
+
+}
+
+else{
+document.getElementById("result2").innerHTML="Ju lutem vendosni kendin!";
+
+}
+        }
+  
+        </script>
+    </body>
+</html>
