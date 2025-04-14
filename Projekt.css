@@ -72,6 +72,12 @@
             display: flex;
         }
 
+ul.sherbimeLista{
+
+        color:white;
+
+}
+
         .social li {
             display: inline-block;
         }
