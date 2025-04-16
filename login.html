@@ -68,7 +68,10 @@
 </body>
 <script>
  
-  document.getElementById("log").addEventListener("submit", function (e) {
+  document.getElementById("log").addEventListener("submit", dergo);
+
+    function (e) {
+        
       e.preventDefault(); // Parandalon rifreskimin e faqes
 
       const email = document.getElementById("email").value.trim();
@@ -104,7 +107,8 @@
 
       const data = JSON.stringify({ email: email, password: password });
       xhr.send(data);
-    });
+        
+    }
 
 </script>
 
