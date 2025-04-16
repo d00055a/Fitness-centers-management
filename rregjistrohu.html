@@ -46,19 +46,77 @@
     </style>
 </head>
 <body>
+    <form action="rregjistrohu" method="post">
     <div class="rregjistrohu">
         <h2>Krijo llogari</h2>
-        <input type="text" placeholder="Emri">
-        <input type="text" placeholder="Mbiemri">
-        <input type="email" placeholder="Email">
-        <input type="password" placeholder="Password">
-        <select id="roli" name="roli">
+        <input type="text" id="emri" name="emri" placeholder="Emri" required>
+        <input type="text" id="mbiemri" name="mbiemri" placeholder="Mbiemri" required>
+        <input type="email" id="email" name="email" placeholder="Email" required>
+        <input type="password" id="password" name="password" placeholder="Password" required minlength="6">
+        <select id="roli" name="roli" required>
             <option value="" disabled selected>Zgjidh një rol...</option>
             <option value="klient">Klient</option>
             <option value="instruktore">Instruktore</option>
             <option value="admin">Admin</option>
           </select>
-          <button>Rregjistrohu</button>
+          <button type="submit">Rregjistrohu</button>
     </div>
+    </form>
+    <p id="msggabim"></p>
+    <p id="msgsakte"></p>
+    <script>
+     document.getElementById("registerForm").addEventListener("submit", function (e) {
+      const emri = document.getElementById("emri").value.trim();
+      const mbiemri = document.getElementById("mbiemri").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const roli = document.getElementById("roli").value;
+      const msggabim = document.getElementById("msggabim");
+      const msgsakte= document.getElementById("msgsakte");
+
+      let errors = [];
+
+      // Validim emri dhe mbiemri
+      if (emri.length < 0) errors.push("Vendos emrin.");
+      if (mbiemri.length < 0) errors.push("Vendos mbiemrin.");
+
+      // Validim email
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) errors.push("Email i pavlefshëm.");
+
+      // Validim fjalëkalimi
+      if (password.length < 6) errors.push("Fjalëkalimi duhet të ketë të paktën 6 karaktere.");
+
+      // Validim roli
+      if (!roli) errors.push("Ju lutem zgjidhni një rol.");
+
+      if (errors.length > 0) {
+        msggabim.innerHTML = errors.join("<br>");
+        msgsakte.textContent = "";
+        return;
+      }
+       // AJAX me objekt XMLHttpRequest
+       const xhr = new XMLHttpRequest();
+      xhr.open("POST", "/rregjistrohu", true);
+      xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            successMsg.textContent = xhr.responseText;
+            errorMsg.textContent = "";
+            document.getElementById("registerForm").reset(); // pastro formën
+          } else {
+            errorMsg.textContent = "Gabim gjatë regjistrimit!";
+            successMsg.textContent = "";
+          }
+        }
+      };
+
+      const data = JSON.stringify({ emri, mbiemri, email, password, roli });
+      xhr.send(data);
+    });
+   
+    </script>
 </body>
 </html>
