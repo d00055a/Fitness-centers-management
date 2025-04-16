@@ -64,8 +64,11 @@
     </form>
     <p id="msggabim"></p>
     <p id="msgsakte"></p>
+    
     <script>
-     document.getElementById("registerForm").addEventListener("submit", function (e) {
+     document.getElementById("registerForm").addEventListener("submit", dergo);
+        
+    function (e) {
       const emri = document.getElementById("emri").value.trim();
       const mbiemri = document.getElementById("mbiemri").value.trim();
       const email = document.getElementById("email").value.trim();
@@ -115,7 +118,7 @@
 
       const data = JSON.stringify({ emri, mbiemri, email, password, roli });
       xhr.send(data);
-    });
+    }
    
     </script>
 </body>
