@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    body{
+        font-family: arial,sans-serif;
+        background-color: aliceblue;
+        display:flex ;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+   .rregjistrohu{
+    background-color: aliceblue;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    width: 300px; ;
+    margin-bottom: 15px;
+   }
+   .rregjistrohu h2{
+    text-align: center;
+   }
+   input,select{
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+   }
+    .rregjistrohu button{
+        
+      width: 100%;
+      padding: 10px;
+      margin: 15px 0;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    
+    </style>
+</head>
+<body>
+    <div class="rregjistrohu">
+        <h2>Krijo llogari</h2>
+        <input type="text" placeholder="Emri">
+        <input type="text" placeholder="Mbiemri">
+        <input type="email" placeholder="Email">
+        <input type="password" placeholder="Password">
+        <select id="roli" name="roli">
+            <option value="" disabled selected>Zgjidh një rol...</option>
+            <option value="klient">Klient</option>
+            <option value="instruktore">Instruktore</option>
+            <option value="admin">Admin</option>
+          </select>
+          <button>Rregjistrohu</button>
+    </div>
+</body>
+</html>
