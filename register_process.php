@@ -56,6 +56,11 @@ if(empty($validime_array)) {
         echo "</ul>";
         }
 
+}   else {
+    http_response_code(405);
+    echo "Nuk mund te perdoret kjo metode";
 }
+
+mysqli_close($conn);
 
 ?>
