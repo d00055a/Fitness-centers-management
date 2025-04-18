@@ -1,125 +1,147 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sq">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-    body{
-        font-family: arial,sans-serif;
-        background-color: aliceblue;
-        display:flex ;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Regjistrimi - FitTech</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: aliceblue;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
     }
-   .rregjistrohu{
-    background-color: aliceblue;
-    padding: 30px;
-    border-radius: 10px;
-    text-align: center;
-    width: 300px; ;
-    margin-bottom: 15px;
-   }
-   .rregjistrohu h2{
-    text-align: center;
-   }
-   input,select{
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-   }
-    .rregjistrohu button{
-        
+    .rregjistrohu {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      width: 300px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .rregjistrohu h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    input, select {
       width: 100%;
       padding: 10px;
-      margin: 15px 0;
+      margin-top: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 20px;
       background-color: #007BFF;
       color: white;
       border: none;
       border-radius: 5px;
       cursor: pointer;
     }
-    
-    </style>
+    #msggabim {
+      color: red;
+      margin-top: 10px;
+    }
+    #msgsakte {
+      color: green;
+      text-align: center;
+      margin-top: 10px;
+    }
+  </style>
 </head>
 <body>
-    <form action="rregjistrohu" method="post">
+
+  <form id="registerForm" method="post">
+    <h3 style="text-align:center; font-weight: bold">FitTech</h3>
+
     <div class="rregjistrohu">
-        <h2>Krijo llogari</h2>
-        <input type="text" id="emri" name="emri" placeholder="Emri" required>
-        <input type="text" id="mbiemri" name="mbiemri" placeholder="Mbiemri" required>
-        <input type="email" id="email" name="email" placeholder="Email" required>
-        <input type="password" id="password" name="password" placeholder="Password" required minlength="6">
-        <select id="roli" name="roli" required>
-            <option value="" disabled selected>Zgjidh një rol...</option>
-            <option value="klient">Klient</option>
-            <option value="instruktore">Instruktore</option>
-            <option value="admin">Admin</option>
-          </select>
-          <button type="submit">Rregjistrohu</button>
+      <h2>Krijo llogari</h2>
+      <input type="text" id="emri" name="emer" placeholder="Emri" required>
+      <input type="text" id="mbiemri" name="mbiemer" placeholder="Mbiemri" required>
+      <input type="email" id="email" name="email" placeholder="Email" required>
+      <input type="password" id="password" name="fjalekalim" placeholder="Fjalekalim" required minlength="6">
+      <select id="roli" name="roli" required>
+        <option value="" disabled selected>Zgjidhni rolin...</option>
+        <option value="klient">Klient</option>
+        <option value="instruktor">Instruktor</option>
+        <option value="admin">Admin</option>
+      </select>
+      <button type="submit">Regjistrohu</button>
+      <p id="msggabim"></p>
+      <p id="msgsakte"></p>
     </div>
-    </form>
-    <p id="msggabim"></p>
-    <p id="msgsakte"></p>
     
-    <script>
-     document.getElementById("registerForm").addEventListener("submit", dergo);
-        
-    function dergo(e) {
+  </form>
+
+  <script>
+    document.getElementById("registerForm").addEventListener("submit", ruaj);
+    
+    function ruaj(e) {
+
+      e.preventDefault();
+
       const emri = document.getElementById("emri").value.trim();
       const mbiemri = document.getElementById("mbiemri").value.trim();
       const email = document.getElementById("email").value.trim();
       const password = document.getElementById("password").value.trim();
       const roli = document.getElementById("roli").value;
-      const msggabim = document.getElementById("msggabim");
-      const msgsakte= document.getElementById("msgsakte");
+      const errorMsg = document.getElementById("msggabim");
+      const successMsg = document.getElementById("msgsakte");
 
-      let errors = [];
+      let errors=[];
 
-      // Validim emri dhe mbiemri
-      if (emri.length < 0) errors.push("Vendos emrin.");
-      if (mbiemri.length < 0) errors.push("Vendos mbiemrin.");
+      if (emri.length === 0) errors.push("Ju lutem plotesoni fushen per emrin");
+      if (mbiemri.length === 0) errors.push("Ju lutem ploteson fushen per mbiemrin");
 
-      // Validim email
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) errors.push("Email i pavlefshëm.");
+      if (!emailRegex.test(email)) errors.push("Email i pavlefshem.");
 
-      // Validim fjalëkalimi
-      if (password.length < 6) errors.push("Fjalëkalimi duhet të ketë të paktën 6 karaktere.");
-
-      // Validim roli
-      if (!roli) errors.push("Ju lutem zgjidhni një rol.");
+      if (password.length < 6) errors.push("Fjalekalimi duhet te kete te pakten 6 karaktere.");
+      if (!roli) errors.push("Ju lutem zgjidhni rolin tuaj!");
 
       if (errors.length > 0) {
-        msggabim.innerHTML = errors.join("<br>");
-        msgsakte.textContent = "";
+        errorMsg.innerHTML = errors.join("<br>");
+        successMsg.textContent = "";
         return;
       }
-       // AJAX me objekt XMLHttpRequest
-       const xhr = new XMLHttpRequest();
-      xhr.open("POST", "register_process.php", true);
-      xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-          if (xhr.status === 200) {
+      const formData = new FormData();
+      formData.append("emer", emri);
+      formData.append("mbiemer", mbiemri);
+      formData.append("email", email);
+      formData.append("password", password);
+      formData.append("roli", roli);
+
+      const xhr = new XMLHttpRequest();
+      xhr.open("POST", "register_process.php", true);
+
+      xhr.onload = function () {
+        if (xhr.status === 200) {
+          if (xhr.responseText.includes("Ju u regjistruat me sukses!")) {
             successMsg.textContent = xhr.responseText;
             errorMsg.textContent = "";
-            document.getElementById("registerForm").reset(); // pastro formën
+            document.getElementById("registerForm").reset();
+            setTimeout(() => {
+              window.location.href = "login.html";
+            }, 1000);
+
           } else {
-            errorMsg.textContent = "Gabim gjatë regjistrimit!";
+            errorMsg.innerHTML = xhr.responseText;
             successMsg.textContent = "";
           }
+        } else {
+          errorMsg.textContent = "Gabim gjate regjistrimit!";
+          successMsg.textContent = "";
         }
       };
 
-      const data = JSON.stringify({ emri, mbiemri, email, password, roli });
-      xhr.send(data);
+      xhr.send(formData);
+
     }
-   
-    </script>
+
+  </script>
 </body>
 </html>
