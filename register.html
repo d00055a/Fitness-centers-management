@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="sq">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,17 +20,24 @@
       width: 300px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-    .rregjistrohu h2 {
+    .rregjistrohu h3 {
       text-align: center;
       margin-bottom: 20px;
     }
     input, select {
-      width: 100%;
+      width: 95%;
       padding: 10px;
       margin-top: 10px;
       border-radius: 5px;
       border: 1px solid #ccc;
     }
+   
+    input#shfaqPass{
+
+   margin-left: -134px;
+
+    }
+
     button {
       width: 100%;
       padding: 10px;
@@ -55,14 +62,17 @@
 <body>
 
   <form id="registerForm" method="post">
-    <h3 style="text-align:center; font-weight: bold">FitTech</h3>
+    <h3 style="text-align:center; font-weight: bold; font-size: 25px;">FitTech</h3>
 
     <div class="rregjistrohu">
-      <h2>Krijo llogari</h2>
+      <h3>Krijoni llogari</h3>
       <input type="text" id="emri" name="emer" placeholder="Emri" required>
       <input type="text" id="mbiemri" name="mbiemer" placeholder="Mbiemri" required>
       <input type="email" id="email" name="email" placeholder="Email" required>
       <input type="password" id="password" name="fjalekalim" placeholder="Fjalekalim" required minlength="6">
+      <input type="checkbox" id="shfaqPass" onclick="shfaq()">
+      <span style="margin-left: -45%; font-size: 15px;">Shfaq fjalekalimin</span>
+      
       <select id="roli" name="roli" required>
         <option value="" disabled selected>Zgjidhni rolin...</option>
         <option value="klient">Klient</option>
@@ -119,8 +129,8 @@
       xhr.open("POST", "register_process.php", true);
 
       xhr.onload = function () {
-        if (xhr.status === 200) {
-          if (xhr.responseText.includes("Ju u regjistruat me sukses!")) {
+        if( this.readyState == 4 && this.status == 200){
+         if (xhr.responseText.includes("Ju u regjistruat me sukses!")) {
             successMsg.textContent = xhr.responseText;
             errorMsg.textContent = "";
             document.getElementById("registerForm").reset();
@@ -142,6 +152,18 @@
 
     }
 
+  function shfaq() {
+
+  let x = document.getElementById("password");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+
+}
+
   </script>
 </body>
 </html>
+
