@@ -127,7 +127,6 @@
 
       const xhr = new XMLHttpRequest();
       xhr.open("POST", "register_process.php", true);
-      xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 
       xhr.onload = function () {
         if( this.readyState == 4 && this.status == 200){
@@ -149,8 +148,7 @@
         }
       };
 
-      xhr.send(`emer=${encodeURIComponent(emri)}&mbiemer=${encodeURIComponent(mbiemri)}&email=${encodeURIComponent(email)}
-      &password=${encodeURIComponent(password)}&roli=${encodeURIComponent(roli)}`);
+      xhr.send(formData);
 
     }
 
