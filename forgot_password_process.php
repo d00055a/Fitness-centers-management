@@ -21,12 +21,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result->num_rows > 0) {
         $kodi_reset = bin2hex(random_bytes(32));
 
-        $sqlInsert = "INSERT INTO rikuperim_fjalekalimi (email_perdoruesi, kodi_reset) VALUES (?, ?)";
-        $stmtInsert = $conn->prepare($sqlInsert);
-        $stmtInsert->bind_param("ss", $email, $kodi_reset);
+        $row = $result->fetch_assoc();
+         $id_perdoruesi = $row['id_perdoruesi'];
+
+         $kohaSkadimit = date("Y-m-d H:i:s", strtotime("+10 minutes"));
+
+     $sqlInsert = "INSERT INTO rikuperim_fjalekalimi (id_perdoruesi, kodi_reset, skadon_ne) VALUES (?, ?, ?)";
+     $stmtInsert = $conn->prepare($sqlInsert);
+     $stmtInsert->bind_param("iss", $id_perdoruesi, $kodi_reset, $kohaSkadimit);
+
         $stmtInsert->execute();
 
-        $link = "http://localhost/reset_password_form.php?code=$kodi_reset";
+        $link = "http://localhost/php-prac/reset_password.html?kodi_reset=" . urlencode($kodi_reset);
 
         $mail = new PHPMailer(true);
 
@@ -45,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             $mail->isHTML(true);
             $mail->Subject = 'Rivendos fjalekalimin - FitTech';
-            $mail->Body = "Per te ndryshuar fjalekalimin, kliko linkun me poshte:<br><a href='$link'>$link</a>";
+            $mail->Body = "Per te ndryshuar fjalekalimin, klikoni linkun me poshte:<br><a href='$link'>$link</a>";
 
             $mail->send();
             echo "Email-i u dergua me sukses. Kontrollo email-in per te rivendosur fjalekalimin.";
@@ -59,6 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $stmt->close();
     $conn->close();
+
 } else {
     http_response_code(405);
     echo "Metode jo e lejuar.";
