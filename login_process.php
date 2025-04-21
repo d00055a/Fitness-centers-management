@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (password_verify($password, $row['fjalekalim'])) {
             $_SESSION['id_perdoruesi'] = $row['id_perdoruesi'];
             $_SESSION['roli'] = $row['emer_roli'];
-            echo "Sukses: Po ridrejtohesh si " . $row['emer_roli'];
+            echo "Sukses! Po ridrejtohesh si " . strtolower($row['emer_roli']); 
         } else {
             echo "Gabim: Fjalekalim i pasakte!";
         }
