@@ -6,7 +6,7 @@ body{
       display: flex;
       align-items: center;
   }
-
+  
   h1 {
       color: lightgrey;
       margin-right: 10px; 
@@ -46,7 +46,10 @@ body{
       font-size: 60px;
 
   }
-
+h2.sherbimet{
+      font-family: cursive;
+    color:lightgrey;
+          }
   p.sherbime{
     color: lightgrey;
     font-family: cursive;
