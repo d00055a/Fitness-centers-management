@@ -1,9 +1,10 @@
 
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <title>Login - FitTech</title>
   <style>
     body {
@@ -92,85 +93,74 @@
   </div>
 
   <script>
+    
+$(document).ready(function () {
 
-      document.getElementById("log").addEventListener("submit", ruaj);
+$("#log").on("submit", function (e) {
+  e.preventDefault();
 
-      function ruaj(e) {
+  const email = $("#email").val().trim();
+  const password = $("#password").val().trim();
+  const msg = $("#msg");
 
-        e.preventDefault();
+  msg.removeClass("success error");
 
-        const email = document.getElementById("email").value.trim();
-        const password = document.getElementById("password").value.trim();
-        const msg = document.getElementById("msg");
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    msg.text("Email i pavlefshem!").addClass("error");
+    return;
+  }
 
-        msg.classList.remove("success", "error");
+  if (password.length < 6) {
+    msg.text("Fjalekalimi duhet te kete te pakten 6 karaktere.").addClass("error");
+    return;
+  }
 
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-          msg.textContent = "Email i pavlefshem! ";
-          msg.classList.add("error");
-          return;
-        }
+  $.ajax({
+    url: "login_process.php",
+    method: "POST",
+    data: {
+      email: email,
+      fjalekalim: password
+    },
+    success: function (response) {
+      const responseText = response.trim().toLowerCase();
 
-        if (password.length < 6) {
-          msg.textContent = "Fjalekalimi duhet te kete te pakten 6 karaktere.";
-          msg.classList.add("error");
-          return;
-        }
+      if (responseText.includes("sukses")) {
+        msg.text("Identifikimi me sukses. Po ridrejtoheni...").addClass("success");
 
-        const formData = new FormData();
-        formData.append("email", email);
-        formData.append("fjalekalim", password);
-
-        const xhr = new XMLHttpRequest();
-        xhr.open("POST", "login_process.php", true);
-
-        xhr.onload = function(){        
-          if( this.readyState == 4 && this.status == 200){
-            const response = xhr.responseText.trim().toLowerCase();
-
-            if (response.includes("sukses")) {
-              msg.textContent = "Identifikimi me sukses. Po ridrejtoheni...";
-              msg.classList.add("success");
-
-              setTimeout(() => {
-                if (response.includes("admin")) {
-                  window.location.href = "profil_admin.php";
-                } else if (response.includes("klient")) {
-                  window.location.href = "profil_klient.php";
-                } else if (response.includes("instruktor")) {
-                  window.location.href = "profil_instruktor.php";
-                } else {
-                  msg.textContent = "Rol i panjohur!";
-                  msg.classList.remove("success");
-                  msg.classList.add("error");
-                }
-
-              }, 1000);
-
-            } else {
-              msg.textContent = xhr.responseText;
-              msg.classList.add("error");
-            }
+        setTimeout(() => {
+          if (responseText.includes("admin")) {
+            window.location.href = "profil_admin.php";
+          } else if (responseText.includes("klient")) {
+            window.location.href = "profil_klient.php";
+          } else if (responseText.includes("instruktor")) {
+            window.location.href = "profil_instruktor.php";
           } else {
-            msg.textContent = "Gabim gjate kerkeses!";
-            msg.classList.add("error");
+            msg.text("Rol i panjohur!").removeClass("success").addClass("error");
           }
-        };
+        }, 1000);
 
-        xhr.send(formData);
-      }
-  
-      function shfaq() {
-
-     let x = document.getElementById("password");
-      if (x.type === "password") {
-       x.type = "text";
       } else {
-         x.type = "password";
+        msg.text(response).addClass("error");
       }
+    },
+    error: function () {
+      msg.text("Gabim gjate kerkeses!").addClass("error");
+    }
+  });
+});
 
-}
+$("#shfaqPass").on("click", function () {
+  const input = $("#password");
+  if (input.attr("type") === "password") {
+    input.attr("type", "text");
+  } else {
+    input.attr("type", "password");
+  }
+});
+
+});
 
 </script>
 
