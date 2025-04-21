@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <title>Regjistrimi - FitTech</title>
   <style>
     body {
@@ -87,81 +88,78 @@
   </form>
 
   <script>
-    document.getElementById("registerForm").addEventListener("submit", ruaj);
     
-    function ruaj(e) {
+     $(document).ready(function () {
 
-      e.preventDefault();
+$("#registerForm").on("submit", function (e) {
+  e.preventDefault();
 
-      const emri = document.getElementById("emri").value.trim();
-      const mbiemri = document.getElementById("mbiemri").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const password = document.getElementById("password").value.trim();
-      const roli = document.getElementById("roli").value;
-      const errorMsg = document.getElementById("msggabim");
-      const successMsg = document.getElementById("msgsakte");
+  const emri = $("#emri").val().trim();
+  const mbiemri = $("#mbiemri").val().trim();
+  const email = $("#email").val().trim();
+  const password = $("#password").val().trim();
+  const roli = $("#roli").val();
+  const errorMsg = $("#msggabim");
+  const successMsg = $("#msgsakte");
 
-      let errors=[];
+  let errors = [];
 
-      if (emri.length === 0) errors.push("Ju lutem plotesoni fushen per emrin");
-      if (mbiemri.length === 0) errors.push("Ju lutem ploteson fushen per mbiemrin");
+  if (emri.length === 0) errors.push("Ju lutem plotesoni fushen per emrin");
+  if (mbiemri.length === 0) errors.push("Ju lutem ploteson fushen per mbiemrin");
 
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) errors.push("Email i pavlefshem.");
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) errors.push("Email i pavlefshem.");
 
-      if (password.length < 6) errors.push("Fjalekalimi duhet te kete te pakten 6 karaktere.");
-      if (!roli) errors.push("Ju lutem zgjidhni rolin tuaj!");
+  if (password.length < 6) errors.push("Fjalekalimi duhet te kete te pakten 6 karaktere.");
+  if (!roli) errors.push("Ju lutem zgjidhni rolin tuaj!");
 
-      if (errors.length > 0) {
-        errorMsg.innerHTML = errors.join("<br>");
-        successMsg.textContent = "";
-        return;
-      }
-
-      const formData = new FormData();
-      formData.append("emer", emri);
-      formData.append("mbiemer", mbiemri);
-      formData.append("email", email);
-      formData.append("password", password);
-      formData.append("roli", roli);
-
-      const xhr = new XMLHttpRequest();
-      xhr.open("POST", "register_process.php", true);
-
-      xhr.onload = function () {
-        if( this.readyState == 4 && this.status == 200){
-         if (xhr.responseText.includes("Ju u regjistruat me sukses!")) {
-            successMsg.textContent = xhr.responseText;
-            errorMsg.textContent = "";
-            document.getElementById("registerForm").reset();
-            setTimeout(() => {
-              window.location.href = "login.html";
-            }, 1000);
-
-          } else {
-            errorMsg.innerHTML = xhr.responseText;
-            successMsg.textContent = "";
-          }
-        } else {
-          errorMsg.textContent = "Gabim gjate regjistrimit!";
-          successMsg.textContent = "";
-        }
-      };
-
-      xhr.send(formData);
-
-    }
-
-  function shfaq() {
-
-  let x = document.getElementById("password");
-  if (x.type === "password") {
-    x.type = "text";
-  } else {
-    x.type = "password";
+  if (errors.length > 0) {
+    errorMsg.html(errors.join("<br>"));
+    successMsg.text("");
+    return;
   }
 
-}
+  $.ajax({
+    url: "register_process.php",
+    method: "POST",
+    data: {
+      emer: emri,
+      mbiemer: mbiemri,
+      email: email,
+      password: password,
+      roli: roli
+    },
+    success: function (response) {
+      if (response.includes("Ju u regjistruat me sukses!")) {
+        successMsg.text(response);
+        errorMsg.text("");
+        $("#registerForm")[0].reset();
+
+        setTimeout(function () {
+          window.location.href = "login.html";
+        }, 1000);
+      } else {
+        errorMsg.html(response);
+        successMsg.text("");
+      }
+    },
+    error: function () {
+      errorMsg.text("Gabim gjate regjistrimit!");
+      successMsg.text("");
+    }
+  });
+});
+
+$("#shfaqPass").on("click", function () {
+  const input = $("#password");
+  if (input.attr("type") === "password") {
+    input.attr("type", "text");
+  } else {
+    input.attr("type", "password");
+  }
+});
+
+});
 
   </script>
 </body>
