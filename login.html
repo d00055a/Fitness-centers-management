@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <title>Login - FitTech</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .login-container {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      margin-bottom: 10%;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 300px;
+    }
+    .login-container h3 {
+      margin-bottom: 20px;
+    }
+    .login-container input[type="email"],
+    .login-container input[type="password"],
+    .login-container input[type="text"] {
+      width: 94%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .login-container button {
+      width: 100%;
+      padding: 10px;
+      margin: 15px 0;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .login-container a {
+      display: block;
+      margin: 10px 0;
+      color: #007BFF;
+      text-decoration: none;
+    }
+
+   input#shfaqPass{
+
+    margin-left: -160px;
+
+   }
+
+    #msg {
+      margin-top: 15px;
+      font-weight: bold;
+      text-align: center;
+    }
+    #msg.success {
+      color: green;
+    }
+    #msg.error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <form id="log">
+    <h3 style="text-align:center; font-weight: bold; font-size: 28px;">FitTech</h3>
+
+    <div class="login-container">
+    <h3>Mire se erdhet!</h3>
+      <input type="email" id="email" name="email" placeholder="Email" required /> 
+      <input type="password" id="password" name="fjalekalim" placeholder="Fjalekalim" required minlength="6" /><br>
+      <input type="checkbox" id="shfaqPass" onclick="shfaq()" />
+      <span style="font-size: 15px; ">Shfaq fjalekalimin</span><br>
+
+      <button type="submit">Logohu</button>
+    </form>
+    <a href="forgot_password.html">Keni harruar fjalekalimin?</a>
+    <button type="button" onclick="window.location.href='register.html'">Regjistrohu</button>
+    <p id="msg"></p>
+  </div>
+
+  <script>
+    
+$(document).ready(function () {
+
+$("#log").on("submit", function (e) {
+  e.preventDefault();
+
+  const email = $("#email").val().trim();
+  const password = $("#password").val().trim();
+  const msg = $("#msg");
+
+  msg.removeClass("success error");
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    msg.text("Email i pavlefshem!").addClass("error");
+    return;
+  }
+
+  if (password.length < 6) {
+    msg.text("Fjalekalimi duhet te kete te pakten 6 karaktere.").addClass("error");
+    return;
+  }
+
+  $.ajax({
+    url: "login_process.php",
+    method: "POST",
+    data: {
+      email: email,
+      fjalekalim: password
+    },
+    success: function (response) {
+      const responseText = response.trim().toLowerCase();
+
+      if (responseText.includes("sukses")) {
+        msg.text("Identifikimi me sukses. Po ridrejtoheni...").addClass("success");
+
+        setTimeout(() => {
+          if (responseText.includes("admin")) {
+            window.location.href = "profil_admin.php";
+          } else if (responseText.includes("klient")) {
+            window.location.href = "profil_klient.php";
+          } else if (responseText.includes("instruktor")) {
+            window.location.href = "profil_instruktor.php";
+          } else {
+            msg.text("Rol i panjohur!").removeClass("success").addClass("error");
+          }
+        }, 1000);
+
+      } else {
+        msg.text(response).addClass("error");
+      }
+    },
+    error: function () {
+      msg.text("Gabim gjate kerkeses!").addClass("error");
+    }
+  });
+});
+
+$("#shfaqPass").on("click", function () {
+  const input = $("#password");
+  if (input.attr("type") === "password") {
+    input.attr("type", "text");
+  } else {
+    input.attr("type", "password");
+  }
+});
+
+});
+
+</script>
+
+</body>
+</html>
