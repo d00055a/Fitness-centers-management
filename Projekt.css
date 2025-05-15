@@ -46,10 +46,12 @@ body{
       font-size: 60px;
 
   }
+
 h2.sherbimet{
       font-family: cursive;
     color:lightgrey;
           }
+
   p.sherbime{
     color: lightgrey;
     font-family: cursive;
@@ -94,14 +96,12 @@ color:lightgrey;
 .address,
 .contact-number {
     font-size: 20px;
-    text-align: center;
-    margin-right: 50px; 
+    margin-right: 100px; 
 }
 
 .contact-number {
     font-size: 20px;
     font-family: Georgia;
-    margin-left: 6%; 
 }
 
 footer {
