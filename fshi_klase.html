@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fshi Klase</title> <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f9fc;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 25px 30px;
+            border-radius: 10px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+
+        input[type="number"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 12px;
+            background-color: #dc3545;
+            color: white;
+            font-size: 15px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #c82333;
+        }
+    </style>
+
+</head>
+<body>
+    <div style="font-size: 25px; font-weight:bold ;">FitTech</div><BR>
+    <form action="fshi_klase_process.php" method="POST">
+     
+        <h2 style="text-align: center;">Fshi një klasë</h2>
+        <input type="number" name="id_klase" placeholder="Shkruaj ID-në e klasës për të fshirë:" required>
+
+        <button type="submit" onclick="return confirm('A jeni i sigurt që doni të fshini këtë klasë?');">Fshi klasën</button>
+    </form>
+</body>
+</html>
