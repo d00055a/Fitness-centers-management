@@ -15,7 +15,6 @@ if (!isset($_GET['id'])) {
 $id_klase = $_GET['id'];
 $id_instruktor = $_SESSION['id_perdoruesi'];
 
-// Merr të dhënat e klasës
 $sql = "SELECT * FROM Klasa WHERE id_klase = ? AND id_instruktori = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("ii", $id_klase, $id_instruktor);
@@ -29,7 +28,6 @@ if ($result->num_rows === 0) {
 
 $klasa = $result->fetch_assoc();
 
-// Merr klientët që NUK janë regjistruar në këtë klasë
 $sql = "SELECT id_perdoruesi, emer, mbiemer FROM Perdorues 
         WHERE id_perdoruesi NOT IN (
             SELECT id_klienti FROM Rezervime WHERE id_klase = ?
@@ -41,7 +39,6 @@ $stmt->bind_param("i", $id_klase);
 $stmt->execute();
 $klientet_disponueshem = $stmt->get_result();
 
-// Merr klientët që janë aktualisht në këtë klasë
 $sql = "SELECT P.id_perdoruesi, P.emer, P.mbiemer 
         FROM Perdorues P
         INNER JOIN Rezervime R ON P.id_perdoruesi = R.id_klienti
@@ -148,6 +145,24 @@ $klientet_regjistruar = $stmt->get_result();
         <label for="pershkrimi">Pershkrimi:</label><br>
         <textarea name="pershkrimi" rows="4" cols="40"><?= htmlspecialchars($klasa['pershkrimi']) ?></textarea>
 
+        <label for="dita">Dita:</label>
+        <select name="dita" required>
+       <option value="">Zgjidhni diten</option>
+    <option value="E Hene">E hene</option>
+    <option value="E Marte">E marte</option>
+    <option value="E Merkure">E merkure</option>
+    <option value="E Enjte">E enjte</option>
+    <option value="E Premte">E premte</option>
+    <option value="E Shtune">E shtune</option>
+    <option value="E Diele">E diele</option>
+</select>
+
+<label for="ora_fillimit">Ora Fillimit:</label>
+<input type="time" name="ora_fillimit" required>
+
+<label for="ora_mbarimit">Ora Mbarimit:</label>
+<input type="time" name="ora_mbarimit" required>
+
         <h3>Shto kliente ne klase:</h3>
         <?php while ($klient = $klientet_disponueshem->fetch_assoc()): ?>
             <input type="checkbox" name="shto_kliente[]" value="<?= $klient['id_perdoruesi'] ?>">
@@ -161,7 +176,7 @@ $klientet_regjistruar = $stmt->get_result();
         <?php endwhile; ?>
 
         
-        <input type="submit" value="Ruaj Ndryshimet">
+        <input type="submit" value="Ruaj ndryshimet">
     </form>
 </body>
 </html>
