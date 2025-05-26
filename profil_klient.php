@@ -90,6 +90,10 @@ if (!isset($_SESSION['roli']) || $_SESSION['roli'] !== 'klient') {
             color: white;
         }
 
+        button{
+            cursor: pointer;
+        }
+
     </style>
 </head>
 <body>
@@ -102,10 +106,24 @@ if (!isset($_SESSION['roli']) || $_SESSION['roli'] !== 'klient') {
 <div class="container">
     <nav>
         <a href="profil_klient.php">Profil</a>
-        <a href="rezervimet.php">Rezervime</a>
+        <a href="rezervo_klase.php">Rezervime</a>
+        <a href="upload_klient.php">Ngarko dokumente</a>
+        <a href="download_klient.php">Shkarko dokumente</a>
         <a href="mesazhe.php">Mesazhe</a>
         <a href="logout.php">Logout</a>
     </nav>
+
+   <div style="margin-top: 30px; margin-left: 23%;">
+    <form method="GET" action="search_rezultate.php">
+        <input type="text" name="query" placeholder="Kerko..." required style="padding: 8px; width: 250px;">
+        <select name="type" style="padding: 8px;">
+            <option value="klasa">Klasa</option>
+            <option value="perdorues">Perdorues</option>
+            <option value="dokument">Dokument</option>
+        </select>
+        <button type="submit" style="padding: 8px 14px;">Kerko</button>
+     </form>
+  </div>
 
     <div class="profile-info">
         <p>Mire se vini, klient!</p>
