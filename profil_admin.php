@@ -66,7 +66,7 @@ if (!isset($_SESSION['roli']) || $_SESSION['roli'] !== 'admin') {
         }
 
         .profile-info p {
-            font-size: 18px;
+            font-size: 22px;
             margin: 10px 0;
         }
 
@@ -85,11 +85,16 @@ if (!isset($_SESSION['roli']) || $_SESSION['roli'] !== 'admin') {
 
         footer {
             text-align: center;
-            margin-top: 180px;
+            margin-top: 150px;
             padding: 10px;
             background-color: #333;
             color: white;
         }
+
+         button{
+            cursor: pointer;
+        }
+        
     </style>
 </head>
 <body>
@@ -105,11 +110,24 @@ if (!isset($_SESSION['roli']) || $_SESSION['roli'] !== 'admin') {
 <div class="container">
     <nav>
         <a href="profil_admin.php">Profil</a>
-        <a href="klasat.php">Klasat</a>
+        <a href="klasa_admin.php">Klasat</a>
+        <a href="upload_admin.php">Ngarko dokumente</a>
+        <a href="download_admin.php">Shiko dokumentet</a>
         <a href="mesazhe.php">Mesazhe</a>
         <a href="login.html">Logout</a>
     </nav>
 
+   <div style="margin-top: 30px; margin-left: 23%;">
+    <form method="GET" action="search_rezultate.php">
+        <input type="text" name="query" placeholder="Kerko..." required style="padding: 8px; width: 250px;">
+        <select name="type" style="padding: 8px;">
+            <option value="klasa">Klasa</option>
+            <option value="perdorues">Perdorues</option>
+            <option value="dokument">Dokument</option>
+        </select>
+        <button type="submit" style="padding: 8px 14px;">Kerko</button>
+     </form>
+  </div>
     <div class="profile-info">
         <p>Mire se vini ne profilin tuaj, admin!</p>
         <button>Edito informacionin</button>
