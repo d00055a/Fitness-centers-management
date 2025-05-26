@@ -90,6 +90,11 @@ if (!isset($_SESSION['roli']) || $_SESSION['roli'] !== 'instruktor'){
             background-color: #343a40;
             color: white;
         }
+
+         button{
+            cursor: pointer;
+        }
+        
     </style>
 </head>
 <body>
@@ -105,10 +110,24 @@ if (!isset($_SESSION['roli']) || $_SESSION['roli'] !== 'instruktor'){
 <div class="container">
     <nav>
         <a href="profil_instruktor.php">Profil</a>
-        <a href="klasat.php">Klasat</a>
+        <a href="klasa_instruktor.php">Klasat</a>
+        <a href="upload_instruktor.php">Ngarko raporte</a>
+        <a href="download_instruktor.php">Shkarko raporte</a>        
         <a href="mesazhe.php">Mesazhe</a>
         <a href="login.html">Logout</a>
     </nav>
+
+   <div style="margin-top: 30px; margin-left: 23%;">
+    <form method="GET" action="search_rezultate.php">
+        <input type="text" name="query" placeholder="Kerko..." required style="padding: 8px; width: 250px;">
+        <select name="type" style="padding: 8px;">
+            <option value="klasa">Klasa</option>
+            <option value="perdorues">Perdorues</option>
+            <option value="dokument">Dokument</option>
+        </select>
+        <button type="submit" style="padding: 8px 14px;">Kerko</button>
+     </form>
+  </div>
 
     <div class="profile-info">
         <p>Mire se vini, instruktor!</p>
