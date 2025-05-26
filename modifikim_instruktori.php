@@ -9,7 +9,7 @@ if (!isset($_SESSION['roli']) || $_SESSION['roli'] !== 'instruktor') {
 }
 
 if (!isset($_GET['id'])) {
-    echo "ID e klases nuk eshte dhene.";
+    echo "ID e klasës nuk është dhënë.";
     exit;
 }
 
