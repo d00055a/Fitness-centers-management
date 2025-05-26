@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edito klase</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 25px 30px;
+            border-radius: 10px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 450px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="time"],
+        select,
+        textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        button {
+            padding: 12px;
+            background-color: #007bff;
+            color: white;
+            font-size: 15px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+   <div style="font-size: 25px; font-weight:bold ;">FitTech</div><br>
+    <form action="edito_klase_process.php" method="POST">
+
+        <h2 style="text-align: center;">Edito nje klase ekzistuese</h2>
+
+        <input type="number" name="id_klase" placeholder="ID e klases" required>
+
+    
+        <input type="text" name="emer_klase" placeholder="Emri i ri i klases" required>
+
+        
+        <textarea name="pershkrimi" placeholder="Pershkrimi i ri i klases" required></textarea>
+
+       
+        <input type="number" name="id_instruktori" placeholder="Instruktori i ri (ID)" required>
+
+        
+        <input type="number" name="kapaciteti_max" placeholder="Kapaciteti i ri" required>
+
+        <select name="dita" required>
+    <option value="">Zgjidhni diten</option>
+    <option value="E Hene">E hene</option>
+    <option value="E Marte">E marte</option>
+    <option value="E Merkure">E merkure</option>
+    <option value="E Enjte">E enjte</option>
+    <option value="E Premte">E premte</option>
+    <option value="E Shtune">E shtune</option>
+    <option value="E Diele">E diele</option>
+         </select>
+
+       <input type="time" name="ora_fillimit" required placeholder="Ora e fillimit">
+       <input type="time" name="ora_mbarimit" required placeholder="Ora e mbarimit">
+
+        <button type="submit">Ruaj ndryshimet</button>
+    </form>
+</body>
+</html>
