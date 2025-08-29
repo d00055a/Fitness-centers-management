@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <title>Regjistrimi - FitTech</title>
+  <style>
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: aliceblue;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .rregjistrohu {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      width: 300px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .rregjistrohu h3 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    input, select {
+      width: 95%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+   
+    input#shfaqPass{
+
+   margin-left: -134px;
+
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 20px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #msggabim {
+      color: red;
+      margin-top: 10px;
+    }
+    #msgsakte {
+      color: green;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <form id="registerForm" method="post">
+    <h3 style="text-align:center; font-weight: bold; font-size: 25px;">FitTech</h3>
+
+    <div class="rregjistrohu">
+      <h3>Krijoni llogari</h3>
+      <input type="text" id="emri" name="emer" placeholder="Emri" required>
+      <input type="text" id="mbiemri" name="mbiemer" placeholder="Mbiemri" required>
+      <input type="email" id="email" name="email" placeholder="Email" required>
+      <input type="password" id="password" name="fjalekalim" placeholder="Fjalekalim" required minlength="6">
+      <input type="checkbox" id="shfaqPass" onclick="shfaq()">
+      <span style="margin-left: -45%; font-size: 15px;">Shfaq fjalekalimin</span>
+      
+      <select id="roli" name="roli" required>
+        <option value="" disabled selected>Zgjidhni rolin...</option>
+        <option value="klient">Klient</option>
+        <option value="instruktor">Instruktor</option>
+        <option value="admin">Admin</option>
+      </select>
+      <button type="submit">Regjistrohu</button>
+      <p id="msggabim"></p>
+      <p id="msgsakte"></p>
+    </div>
+    
+  </form>
+
+  <script>
+    
+     $(document).ready(function () {
+
+$("#registerForm").on("submit", function (e) {
+  e.preventDefault();
+
+  const emri = $("#emri").val().trim();
+  const mbiemri = $("#mbiemri").val().trim();
+  const email = $("#email").val().trim();
+  const password = $("#password").val().trim();
+  const roli = $("#roli").val();
+  const errorMsg = $("#msggabim");
+  const successMsg = $("#msgsakte");
+
+  let errors = [];
+
+  if (emri.length === 0) errors.push("Ju lutem plotesoni fushen per emrin");
+  if (mbiemri.length === 0) errors.push("Ju lutem ploteson fushen per mbiemrin");
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) errors.push("Email i pavlefshem.");
+
+  if (password.length < 6) errors.push("Fjalekalimi duhet te kete te pakten 6 karaktere.");
+  if (!roli) errors.push("Ju lutem zgjidhni rolin tuaj!");
+
+  if (errors.length > 0) {
+    errorMsg.html(errors.join("<br>"));
+    successMsg.text("");
+    return;
+  }
+
+  $.ajax({
+    url: "register_process.php",
+    method: "POST",
+    data: {
+      emer: emri,
+      mbiemer: mbiemri,
+      email: email,
+      password: password,
+      roli: roli
+    },
+    success: function (response) {
+      if (response.includes("Ju u regjistruat me sukses!")) {
+        successMsg.text(response);
+        errorMsg.text("");
+        $("#registerForm")[0].reset();
+
+        setTimeout(function () {
+          window.location.href = "login.html";
+        }, 1000);
+      } else {
+        errorMsg.html(response);
+        successMsg.text("");
+      }
+    },
+    error: function () {
+      errorMsg.text("Gabim gjate regjistrimit!");
+      successMsg.text("");
+    }
+  });
+});
+
+$("#shfaqPass").on("click", function () {
+  const input = $("#password");
+  if (input.attr("type") === "password") {
+    input.attr("type", "text");
+  } else {
+    input.attr("type", "password");
+  }
+});
+
+});
+
+  </script>
+</body>
+</html>
