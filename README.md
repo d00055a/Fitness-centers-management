@@ -16,7 +16,7 @@ Technologies used:
 - Git & GitHub --> for version control and hosting
 - GitHub Pages --> for live deployment
 
-Live Demo : view here --> (https://d00055a.github.io/Menaxhim-Fitnesi/) 
+Live Demo : view here --> (https://d00055a.github.io/Fitness-centers-management/) 
 
 License © 2025 Daniel Dedja. All rights reserved.
 
