@@ -1,10 +1,38 @@
-# Management system for fitness centers
+# Fitness Center Management System
 
-This is a management system for fitness centers where clients can register and book classes. 
+A full-featured fitness center management system that allows clients to register, book classes and interact with instructors, while providing administrators with full system control.
 
-Instructors can manage schedules ,classes and provide workout advice.
+This project demonstrates a role-based web application built with PHP and MySQL, including authentication, CRUD operations and database management.
 
-Meanwhile, system administrators have full access to the system. They can modify, delete, and manage schedules, classes and the system’s database.
+Features :
+
+👤 Client
+
+- User registration and login
+
+- View available classes
+
+- Book fitness classes
+
+- Manage personal profile
+
+🏋️ Instructor
+
+- Manage class schedules
+
+- Create and update fitness classes
+
+- Provide workout guidance to clients
+
+🛠️ Administrator
+
+- Full access to the system
+
+- Manage users, classes, and schedules
+
+- Perform CRUD operations on system data
+
+- Database management via phpMyAdmin
 
 Technologies used:
 
