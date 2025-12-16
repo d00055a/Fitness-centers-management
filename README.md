@@ -60,7 +60,7 @@ The full backend functionality (PHP & MySQL) runs locally using XAMPP.
 2. Clone the repository:
 
 ```bash
-git clone https://github.com/d00055a/Fitness-centers-management.git
+git clone [https://github.com/d00055a/Fitness-centers-management.git]
 ```
 
 3. Move the project folder to:
