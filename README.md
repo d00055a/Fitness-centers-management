@@ -60,11 +60,13 @@ Run Locally :
 
 ```bash
 git clone https://github.com/d00055a/Fitness-centers-management.git
+```
 
 3. Move the project folder to:
 
  ```bash
  xampp/htdocs/
+ ```
  
 4. Import the database using phpMyAdmin
 
@@ -74,7 +76,7 @@ git clone https://github.com/d00055a/Fitness-centers-management.git
 
   ```bash
   http://localhost/Fitness-centers-management
-  
+  ```
 
 License © 2025 Daniel Dedja. All rights reserved.
 
