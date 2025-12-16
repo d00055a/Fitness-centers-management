@@ -52,6 +52,31 @@ Live Demo : view here --> (https://d00055a.github.io/Fitness-centers-management/
 - Note: The live demo showcases the frontend interface only.
 The full backend functionality (PHP & MySQL) runs locally using XAMPP.
 
+Run Locally :
+
+1. Install XAMPP
+
+2. Clone the repository:
+
+``bash
+git clone https://github.com/d00055a/Fitness-centers-management.git
+``
+
+3. Move the project folder to:
+
+ ``bash
+ xampp/htdocs/
+ ``
+4. Import the database using phpMyAdmin
+
+5. Start Apache and MySQL
+
+6. Open in browser:
+
+  ``bash
+  http://localhost/Fitness-centers-management
+  ``
+
 License © 2025 Daniel Dedja. All rights reserved.
 
 
