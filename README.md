@@ -34,15 +34,19 @@ Features :
 
 - Database management via phpMyAdmin
 
-Technologies used:
+Tech Stack :
 
-- HTML5 --> for structuring the content
-- CSS3 --> for styling and responsiveness
-- JavaScript & jQuery --> Functionality, interactivity, client-side validation and event handling
-- PHP --> Database interaction, server-side validation and CRUD operations
-- MySQL --> Data storage and organization, DDL, DML and DCL
-- Git & GitHub --> for version control and hosting
-- GitHub Pages --> for live deployment
+- HTML5 – structure and layout
+
+- CSS3 – styling and responsiveness
+
+- JavaScript & jQuery – interactivity, form validation, event handling
+
+- PHP – server-side logic, authentication, CRUD operations
+
+- MySQL – database design and management (DDL, DML, DCL)
+
+- Git & GitHub – version control
 
 Live Demo : view here --> (https://d00055a.github.io/Fitness-centers-management/) 
 
