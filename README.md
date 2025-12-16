@@ -1,8 +1,8 @@
 # Fitness Center Management System
 
-A full-featured fitness center management system that allows clients to register, book classes and interact with instructors, while providing administrators with full system control.
+A full-featured **fitness center management system** that allows clients to register, book classes and interact with instructors, while providing administrators with full system control.
 
-This project demonstrates a role-based web application built with PHP and MySQL, including authentication, CRUD operations and database management.
+This project demonstrates a **role-based web application** built with PHP and MySQL, including authentication, CRUD operations and database management.
 
 ## Features 
 
@@ -36,17 +36,17 @@ This project demonstrates a role-based web application built with PHP and MySQL,
 
 ## Tech Stack 
 
-- HTML5 – structure and layout
+- **HTML5** – structure and layout
 
-- CSS3 – styling and responsiveness
+- **CSS3** – styling and responsiveness
 
-- JavaScript & jQuery – interactivity, form validation, event handling
+- **JavaScript & jQuery** – interactivity, form validation, event handling
 
-- PHP – server-side logic, authentication, CRUD operations
+- **PHP** – server-side logic, authentication, CRUD operations
 
-- MySQL – database design and management (DDL, DML, DCL)
+- **MySQL** – database design and management (DDL, DML, DCL)
 
-- Git & GitHub – version control
+- **Git & GitHub** – version control
 
 ## Live Demo 
 View here --> (https://d00055a.github.io/Fitness-centers-management/) 
@@ -55,7 +55,7 @@ The full backend functionality (PHP & MySQL) runs locally using XAMPP.
 
 ## Run Locally 
 
-1. Install XAMPP
+1. Install **XAMPP**
 
 2. Clone the repository:
 
@@ -69,9 +69,9 @@ git clone https://github.com/d00055a/Fitness-centers-management.git
  xampp/htdocs/
  ```
  
-4. Import the database using phpMyAdmin
+4. Import the database using **phpMyAdmin**
 
-5. Start Apache and MySQL
+5. Start **Apache** and **MySQL**
 
 6. Open in browser:
 
@@ -83,13 +83,13 @@ git clone https://github.com/d00055a/Fitness-centers-management.git
 
 This project was built as part of my learning journey to practice:
 
-PHP & MySQL development
+- PHP & MySQL development
 
-Role-based access control
+- Role-based access control
 
-Full CRUD functionality
+= Full CRUD functionality
 
-Real-world web application structure <br/><br/>
+- Real-world web application structure <br/><br/>
 
 License © 2025 Daniel Dedja. All rights reserved.
 
