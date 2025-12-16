@@ -1,6 +1,19 @@
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body{
     background-image: url(https://upload.wikimedia.org/wikipedia/commons/e/e4/StarfieldSimulation.gif);
+    animation: fadeIn 1s ease-in;
   }
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 
   header {
       display: flex;
@@ -110,4 +123,5 @@ footer {
     align-items: center;
     flex-wrap: wrap; 
 }
+
        
