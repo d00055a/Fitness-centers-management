@@ -87,7 +87,7 @@ This project was built as part of my learning journey to practice:
 
 - Role-based access control
 
-= Full CRUD functionality
+- Full CRUD functionality
 
 - Real-world web application structure <br/><br/>
 
