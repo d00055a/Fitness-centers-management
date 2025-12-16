@@ -49,6 +49,8 @@ Tech Stack :
 - Git & GitHub – version control
 
 Live Demo : view here --> (https://d00055a.github.io/Fitness-centers-management/) 
+- Note: The live demo showcases the frontend interface only.
+The full backend functionality (PHP & MySQL) runs locally using XAMPP.
 
 License © 2025 Daniel Dedja. All rights reserved.
 
