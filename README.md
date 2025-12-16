@@ -48,7 +48,7 @@ This project demonstrates a role-based web application built with PHP and MySQL,
 
 - Git & GitHub – version control
 
-## Live Demo : view here --> (https://d00055a.github.io/Fitness-centers-management/) 
+Live Demo : view here --> (https://d00055a.github.io/Fitness-centers-management/) 
 - Note: The live demo showcases the frontend interface only.
 The full backend functionality (PHP & MySQL) runs locally using XAMPP.
 
