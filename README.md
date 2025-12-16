@@ -58,24 +58,23 @@ Run Locally :
 
 2. Clone the repository:
 
-``bash
+```bash
 git clone https://github.com/d00055a/Fitness-centers-management.git
-``
 
 3. Move the project folder to:
 
- ``bash
+ ```bash
  xampp/htdocs/
- ``
+ 
 4. Import the database using phpMyAdmin
 
 5. Start Apache and MySQL
 
 6. Open in browser:
 
-  ``bash
+  ```bash
   http://localhost/Fitness-centers-management
-  ``
+  
 
 License © 2025 Daniel Dedja. All rights reserved.
 
