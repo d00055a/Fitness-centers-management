@@ -4,7 +4,7 @@ A full-featured fitness center management system that allows clients to register
 
 This project demonstrates a role-based web application built with PHP and MySQL, including authentication, CRUD operations and database management.
 
-Features :
+## Features :
 
 👤 Client
 
@@ -34,7 +34,7 @@ Features :
 
 - Database management via phpMyAdmin
 
-Tech Stack :
+## Tech Stack :
 
 - HTML5 – structure and layout
 
@@ -48,11 +48,11 @@ Tech Stack :
 
 - Git & GitHub – version control
 
-Live Demo : view here --> (https://d00055a.github.io/Fitness-centers-management/) 
+## Live Demo : view here --> (https://d00055a.github.io/Fitness-centers-management/) 
 - Note: The live demo showcases the frontend interface only.
 The full backend functionality (PHP & MySQL) runs locally using XAMPP.
 
-Run Locally :
+## Run Locally :
 
 1. Install XAMPP
 
