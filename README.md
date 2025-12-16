@@ -89,7 +89,7 @@ Role-based access control
 
 Full CRUD functionality
 
-Real-world web application structure
+Real-world web application structure <br>
 
 License © 2025 Daniel Dedja. All rights reserved.
 
