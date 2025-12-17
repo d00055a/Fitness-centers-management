@@ -6,7 +6,7 @@ This project demonstrates a **role-based web application** built with PHP and My
 
 ## Features 
 
-👤 Clien
+👤 Client
 
 - User registration and login
 
