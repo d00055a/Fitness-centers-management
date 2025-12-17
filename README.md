@@ -89,8 +89,6 @@ This project was built as part of my learning journey to practice:
 
 - Full CRUD functionality
 
-- Real-world web application structure <br/><br/>
-
-License © 2025 Daniel Dedja. All rights reserved.
+- Real-world web application structure
 
 
