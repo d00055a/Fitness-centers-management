@@ -49,7 +49,7 @@ This project demonstrates a **role-based web application** built with PHP and My
 - **Git & GitHub** – version control
 
 ## Live Demo 
-View here --> (https://d00055a.github.io/Fitness-centers-management/) 
+View here --> (https://d00055a.github.io/fitness-management-system/) 
 - Note: The live demo showcases the frontend interface only.
 The full backend functionality (PHP & MySQL) runs locally using XAMPP.
 
@@ -60,7 +60,7 @@ The full backend functionality (PHP & MySQL) runs locally using XAMPP.
 2. Clone the repository:
 
 ```bash
-git clone https://github.com/d00055a/Fitness-centers-management.git
+git clone https://github.com/d00055a/fitness-management-system.git
 ```
 
 3. Move the project folder to:
