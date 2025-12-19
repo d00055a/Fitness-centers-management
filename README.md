@@ -76,7 +76,7 @@ git clone https://github.com/d00055a/fitness-management-system.git
 6. Open in browser:
 
   ```bash
-  http://localhost/fitness-management-system
+  http://localhost/folder-name
   ```
 
 ## Purpose
