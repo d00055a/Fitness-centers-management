@@ -1,94 +1,95 @@
 # Fitness Center Management System
 
-A full-featured **fitness center management system** that allows clients to register, book classes and interact with instructors, while providing administrators with full system control.
+## Overview
 
-This project demonstrates a **role-based web application** built with PHP and MySQL, including authentication, CRUD operations and database management.
+This project is a role-based Fitness Center Management System developed as part of the "Web Programming" course during the final year of my Bachelor's degree in Informatics.
 
-## Features 
+The system allows clients to register and book fitness classes, instructors to manage schedules and classes, and administrators to fully control users and system data.
 
-👤 Client
+## Project Context
+
+This project was developed as a group assignment with four other students.
+
+I served as the team leader and was responsible for coordinating the development process, presenting the project during the semester modules and delivering the final presentation.  
+My contribution covered approximately 85% of the overall implementation, including core backend logic, database design, authentication and the majority of application features.
+
+The project received a final evaluation score of **45 out of 50 points**.
+
+## Features
+
+### Client
 
 - User registration and login
-
-- View available classes
-
+- View available fitness classes
 - Book fitness classes
-
 - Manage personal profile
 
-🏋️ Instructor
+### Instructor
 
-- Manage class schedules
-
-- Create and update fitness classes
-
+- Create and manage fitness classes
+- Update class schedules
 - Provide workout guidance to clients
 
-🛠️ Administrator
+### Administrator
 
-- Full access to the system
-
-- Manage users, classes, and schedules
-
-- Perform CRUD operations on system data
-
+- Full system access
+- Manage users, classes and schedules
+- Perform full CRUD operations
 - Database management via phpMyAdmin
 
-## Tech Stack 
+## Tech Stack
 
-- **HTML5** – structure and layout
+- HTML5 – Structure and layout
+- CSS3 – Styling and responsiveness
+- JavaScript & jQuery – Client-side interactivity and validation
+- PHP – Server-side logic and authentication
+- MySQL – Database design and management
+- Git & GitHub – Version control
 
-- **CSS3** – styling and responsiveness
+## Architecture
 
-- **JavaScript & jQuery** – interactivity, form validation, event handling
+- Frontend: HTML, CSS, JavaScript, jQuery
+- Backend: PHP
+- Database: MySQL (managed via phpMyAdmin)
 
-- **PHP** – server-side logic, authentication, CRUD operations
+## Live Demo
 
-- **MySQL** – database design and management (DDL, DML, DCL)
+Frontend demo:  
+https://d00055a.github.io/fitness-management-system/
 
-- **Git & GitHub** – version control
+> Note: The live demo showcases the frontend interface only.  
+> Backend functionality (PHP & MySQL) runs locally using XAMPP.
 
-## Live Demo 
-View here --> (https://d00055a.github.io/fitness-management-system/) 
-- Note: The live demo showcases the frontend interface only.
-The full backend functionality (PHP & MySQL) runs locally using XAMPP.
+## Run Locally
 
-## Run Locally 
-
-1. Install **XAMPP**
-
+1. Install XAMPP
 2. Clone the repository:
-
 ```bash
 git clone https://github.com/d00055a/fitness-management-system.git
 ```
-
 3. Move the project folder to:
+```bash
+xampp/htdocs/
+```
+4. Import the database using phpMyAdmin
 
- ```bash
- xampp/htdocs/
- ```
- 
-4. Import the database using **phpMyAdmin**
-
-5. Start **Apache** and **MySQL**
+5. Start Apache and MySQL
 
 6. Open in browser:
-
-  ```bash
-  http://localhost/folder-name
-  ```
+```perl
+http://localhost/fitness-management-system
+```
 
 ## Purpose
 
-This project was built as part of my learning journey to practice:
+This project was built to practice and demonstrate:
 
-- PHP & MySQL development
+- PHP & MySQL web development
 
 - Role-based access control
 
 - Full CRUD functionality
 
+- Team leadership and project presentation
+
 - Real-world web application structure
-
-
